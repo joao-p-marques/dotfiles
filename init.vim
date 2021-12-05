@@ -1,163 +1,149 @@
-" Install vim-plug:
-" curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"--------------------------------------------------------------------------
+" General settings
+"--------------------------------------------------------------------------
 
-call plug#begin()
+set expandtab
+set shiftwidth=4
+set tabstop=4
+set hidden
+set signcolumn=yes:2
+set relativenumber
+set number
+set termguicolors
+set undofile
+set spell
+set title
+set ignorecase
+set smartcase
+set wildmode=longest:full,full
+set nowrap
+set list
+set listchars=tab:▸\ ,trail:·
+set mouse=a
+set scrolloff=8
+set sidescrolloff=8
+set nojoinspaces
+set splitright
+set clipboard=unnamedplus
+set confirm
+set exrc
+set backup
+set backupdir=~/.local/share/nvim/backup//
+set updatetime=300 " Reduce time for highlighting other references
+set redrawtime=10000 " Allow more time for loading syntax on large files
 
-" Add or remove your Bundles here:
+"--------------------------------------------------------------------------
+" Key maps
+"--------------------------------------------------------------------------
 
-Plug 'tpope/vim-fugitive'
+let mapleader = "\<space>"
 
-" Antlr plugin
-Plug 'dylon/vim-antlr', { 'for' : 'g4' }
+nmap <leader>ve :edit ~/.config/nvim/init.vim<cr>
+nmap <leader>vc :edit ~/.config/nvim/coc-settings.json<cr>
+nmap <leader>vr :source ~/.config/nvim/init.vim<cr>
 
-" Surround plugin
-Plug 'tpope/vim-surround'
+nmap <leader>k :nohlsearch<CR>
+nmap <leader>Q :bufdo bdelete<cr>
 
-Plug 'tpope/vim-repeat'
+" Allow gf to open non-existent files
+map gf :edit <cfile><cr>
 
-" Comment plugin
-Plug 'tpope/vim-commentary'
+" Reselect visual selection after indenting
+vnoremap < <gv
+vnoremap > >gv
 
-" " Snippets plugin
-" Plug 'ncm2/ncm2', { 'on' : [] }
-" Plug 'SirVer/ultisnips', { 'on' : [] }
-" Plug 'honza/vim-snippets', { 'on' : [] }
-" Plug 'Shougo/neosnippet.vim'
-" Plug 'Shougo/neosnippet-snippets'
+" Maintain the cursor position when yanking a visual selection
+" http://ddrscott.github.io/blog/2016/yank-without-jank/
+vnoremap y myy`y
+vnoremap Y myY`y
 
-" NeoMake
-Plug 'neomake/neomake'
+" When text is wrapped, move by terminal rows, not lines, unless a count is provided
+noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
-" YouCompleteMe
-" Plug 'Valloric/YouCompleteMe'
+" Paste replace visual selection without copying it
+vnoremap <leader>p "_dP
 
-" Completion
-Plug 'Shougo/deoplete.nvim' , { 'do': ':UpdateRemotePlugins'}
+" Make Y behave like the other capitals
+nnoremap Y y$
 
-" " Completion Sources
+" Keep it centered
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
 
-" All
-" Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+" Open the current file in the default program
+nmap <leader>x :!xdg-open %<cr><cr>
 
-" Python
-Plug 'deoplete-plugins/deoplete-jedi', { 'for' : 'python', 'on': [] }
+" Quicky escape to normal mode
+imap jj <esc>
 
-" " Java
-" Plug 'artur-shaik/vim-javacomplete2', { 'for' : 'java' }
+" Easy insertion of a trailing ; or , from insert mode
+imap ;; <Esc>A;<Esc>
+imap ,, <Esc>A,<Esc>
 
-" TypeScript
-Plug 'HerringtonDarkholme/yats.vim', { 'for' : 'ts' }
-" Plug 'mhartington/nvim-typescript', { 'for' : 'ts', 'do': './install.sh' }
+cmap w!! %!sudo tee > /dev/null %
 
-" " JavaScript
-" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern', 'for' : 'js' }
+"--------------------------------------------------------------------------
+" Plugins
+"--------------------------------------------------------------------------
 
-Plug 'ayu-theme/ayu-vim'
+" Automatically install vim-plug
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-Plug 'ctrlpvim/ctrlp.vim'
+call plug#begin(data_dir . '/plugins')
+
+source ~/.config/nvim/plugins/airline.vim
+source ~/.config/nvim/plugins/coc.vim
+source ~/.config/nvim/plugins/commentary.vim
+source ~/.config/nvim/plugins/context-commentstring.vim
+source ~/.config/nvim/plugins/dispatch.vim
+source ~/.config/nvim/plugins/dracula.vim
+source ~/.config/nvim/plugins/editorconfig.vim
+source ~/.config/nvim/plugins/eunuch.vim
+source ~/.config/nvim/plugins/exchange.vim
+source ~/.config/nvim/plugins/floaterm.vim
+source ~/.config/nvim/plugins/fugitive.vim
+source ~/.config/nvim/plugins/fzf.vim
+source ~/.config/nvim/plugins/heritage.vim
+source ~/.config/nvim/plugins/lastplace.vim
+source ~/.config/nvim/plugins/lion.vim
+source ~/.config/nvim/plugins/markdown-preview.vim
+source ~/.config/nvim/plugins/nerdtree.vim
+source ~/.config/nvim/plugins/pasta.vim
+source ~/.config/nvim/plugins/peekaboo.vim
+source ~/.config/nvim/plugins/polyglot.vim
+source ~/.config/nvim/plugins/projectionist.vim
+source ~/.config/nvim/plugins/quickscope.vim
+source ~/.config/nvim/plugins/repeat.vim
+source ~/.config/nvim/plugins/rooter.vim
+source ~/.config/nvim/plugins/sayonara.vim
+source ~/.config/nvim/plugins/smooth-scroll.vim
+source ~/.config/nvim/plugins/splitjoin.vim
+source ~/.config/nvim/plugins/surround.vim
+source ~/.config/nvim/plugins/targets.vim
+source ~/.config/nvim/plugins/textobj-xmlattr.vim
+source ~/.config/nvim/plugins/unimpaired.vim
+source ~/.config/nvim/plugins/vim-test.vim
+source ~/.config/nvim/plugins/visual-multi.vim
+source ~/.config/nvim/plugins/visual-star-search.vim
+source ~/.config/nvim/plugins/which-key.vim
 
 call plug#end()
+doautocmd User PlugLoaded
 
-" Set number
-set number relativenumber
+"--------------------------------------------------------------------------
+" Miscellaneous
+"--------------------------------------------------------------------------
 
-" Map Ctrl-Backspace to delete the previous word in insert mode.
-imap <C-BS> <C-W>
+augroup FileTypeOverrides
+    autocmd!
+    " Use '//' instead of '/* */' comments
+    autocmd FileType php setlocal commentstring=//%s
+    autocmd TermOpen * setlocal nospell
+augroup END
 
-" Indentation settings
-set expandtab
-set shiftwidth=2
-set softtabstop=2
-
-" Fold / Collapse
-" set foldmethod=indent
-" set foldlevel=1
-" set foldopen=all
-
-" Set Search Highlight
-set hlsearch
-
-set autoindent
-
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-s>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-call neomake#configure#automake('w')
-
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_ignore_case = 1
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#enable_camel_case = 1
-let g:deoplete#enable_refresh_always = 1
-let g:deoplete#max_abbr_width = 0
-let g:deoplete#max_menu_width = 0
-
-if has('nvim')
-  tnoremap <Esc> <C-\><C-n>
-endif
-
-" set termguicolors     " enable true colors support
-" let ayucolor="light"  " for light version of theme
-" let ayucolor="mirage" " for mirage version of theme
-" let ayucolor="dark"   " for dark version of theme
-" colorscheme ayu
-
-" augroup load_us_ycm
-"   " autocmd!
-"   autocmd InsertEnter * call plug#load('deoplete.nvim')
-"                      \| autocmd! load_us_ycm
-" augroup END
-
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
-
-if &filetype ==# 'java'
-  autocmd FileType java setlocal omnifunc=javacomplete#Complete
-  let g:deoplete#omni_patterns = {}
-  let g:deoplete#omni_patterns.java = '[^. *\t]\.\w*'
-  let g:deoplete#sources = {}
-  let g:deoplete#sources._ = []
-endif
-
-" javacomplete2
-nmap <leader>jI <Plug>(JavaComplete-Imports-AddMissing)
-nmap <leader>jR <Plug>(JavaComplete-Imports-RemoveUnused)
-nmap <leader>ji <Plug>(JavaComplete-Imports-AddSmart)
-nmap <leader>jii <Plug>(JavaComplete-Imports-Add)
-
-imap <C-j>I <Plug>(JavaComplete-Imports-AddMissing)
-imap <C-j>R <Plug>(JavaComplete-Imports-RemoveUnused)
-imap <C-j>i <Plug>(JavaComplete-Imports-AddSmart)
-imap <C-j>ii <Plug>(JavaComplete-Imports-Add)
-
-nmap <leader>jM <Plug>(JavaComplete-Generate-AbstractMethods)
-
-imap <C-j>jM <Plug>(JavaComplete-Generate-AbstractMethods)
-
-nmap <leader>jA <Plug>(JavaComplete-Generate-Accessors)
-nmap <leader>js <Plug>(JavaComplete-Generate-AccessorSetter)
-nmap <leader>jg <Plug>(JavaComplete-Generate-AccessorGetter)
-nmap <leader>ja <Plug>(JavaComplete-Generate-AccessorSetterGetter)
-nmap <leader>jts <Plug>(JavaComplete-Generate-ToString)
-nmap <leader>jeq <Plug>(JavaComplete-Generate-EqualsAndHashCode)
-nmap <leader>jc <Plug>(JavaComplete-Generate-Constructor)
-nmap <leader>jcc <Plug>(JavaComplete-Generate-DefaultConstructor)
-
-imap <C-j>s <Plug>(JavaComplete-Generate-AccessorSetter)
-imap <C-j>g <Plug>(JavaComplete-Generate-AccessorGetter)
-imap <C-j>a <Plug>(JavaComplete-Generate-AccessorSetterGetter)
-
-vmap <leader>js <Plug>(JavaComplete-Generate-AccessorSetter)
-vmap <leader>jg <Plug>(JavaComplete-Generate-AccessorGetter)
-vmap <leader>ja <Plug>(JavaComplete-Generate-AccessorSetterGetter)
-
-nmap <silent> <buffer> <leader>jn <Plug>(JavaComplete-Generate-NewClass)
-nmap <silent> <buffer> <leader>jN <Plug>(JavaComplete-Generate-ClassInFile)
-
-" CtrlP
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-
-" Deoplete
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
