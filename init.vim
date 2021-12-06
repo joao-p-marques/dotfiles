@@ -6,7 +6,7 @@ set expandtab
 set shiftwidth=4
 set tabstop=4
 set hidden
-set signcolumn=yes:2
+" set signcolumn=yes:2
 set relativenumber
 set number
 set termguicolors
@@ -32,9 +32,9 @@ set backupdir=~/.local/share/nvim/backup//
 set updatetime=300 " Reduce time for highlighting other references
 set redrawtime=10000 " Allow more time for loading syntax on large files
 
-"--------------------------------------------------------------------------
+" --------------------------------------------------------------------------
 " Key maps
-"--------------------------------------------------------------------------
+" --------------------------------------------------------------------------
 
 let mapleader = "\<space>"
 
@@ -102,7 +102,8 @@ source ~/.config/nvim/plugins/coc.vim
 source ~/.config/nvim/plugins/commentary.vim
 source ~/.config/nvim/plugins/context-commentstring.vim
 source ~/.config/nvim/plugins/dispatch.vim
-source ~/.config/nvim/plugins/dracula.vim
+" source ~/.config/nvim/plugins/dracula.vim
+source ~/.config/nvim/plugins/github-theme.vim
 source ~/.config/nvim/plugins/editorconfig.vim
 source ~/.config/nvim/plugins/eunuch.vim
 source ~/.config/nvim/plugins/exchange.vim
@@ -146,4 +147,3 @@ augroup FileTypeOverrides
     autocmd FileType php setlocal commentstring=//%s
     autocmd TermOpen * setlocal nospell
 augroup END
-
