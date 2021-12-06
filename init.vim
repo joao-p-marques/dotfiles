@@ -84,6 +84,11 @@ imap ,, <Esc>A,<Esc>
 
 cmap w!! %!sudo tee > /dev/null %
 
+" Map Ctrl-Backspace to delete the previous word in insert mode.
+set backspace=indent,eol,start
+noremap! <C-BS> <C-w>
+noremap! <C-h> <C-w>
+
 "--------------------------------------------------------------------------
 " Plugins
 "--------------------------------------------------------------------------
@@ -103,13 +108,13 @@ source ~/.config/nvim/plugins/commentary.vim
 source ~/.config/nvim/plugins/context-commentstring.vim
 source ~/.config/nvim/plugins/dispatch.vim
 " source ~/.config/nvim/plugins/dracula.vim
-source ~/.config/nvim/plugins/github-theme.vim
 source ~/.config/nvim/plugins/editorconfig.vim
 source ~/.config/nvim/plugins/eunuch.vim
 source ~/.config/nvim/plugins/exchange.vim
 source ~/.config/nvim/plugins/floaterm.vim
 source ~/.config/nvim/plugins/fugitive.vim
 source ~/.config/nvim/plugins/fzf.vim
+source ~/.config/nvim/plugins/github-theme.vim
 source ~/.config/nvim/plugins/heritage.vim
 source ~/.config/nvim/plugins/lastplace.vim
 source ~/.config/nvim/plugins/lion.vim
@@ -126,6 +131,7 @@ source ~/.config/nvim/plugins/sayonara.vim
 source ~/.config/nvim/plugins/smooth-scroll.vim
 source ~/.config/nvim/plugins/splitjoin.vim
 source ~/.config/nvim/plugins/surround.vim
+source ~/.config/nvim/plugins/tagbar.vim
 source ~/.config/nvim/plugins/targets.vim
 source ~/.config/nvim/plugins/textobj-xmlattr.vim
 source ~/.config/nvim/plugins/unimpaired.vim

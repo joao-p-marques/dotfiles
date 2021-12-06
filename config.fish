@@ -8,6 +8,7 @@ if [ -f '/home/jota/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/home/jota/D
 alias ll='ls -la'
 alias rm='rm -I'
 alias v='nvim'
+alias vim='nvim'
 
 alias mvn='docker run -it --rm -v $PWD:/src -w /src maven mvn'
 alias yarn='docker run -it --rm -v $PWD:/src -w /src node yarn'
