@@ -29,6 +29,7 @@ alias notes='cd ~/Documents/P/Notes/'
 bind \cH backward-kill-word
 bind "[3;5~" kill-word
 
-
 # Created by `pipx` on 2021-06-21 06:10:17
 set PATH $PATH /var/home/jota/.local/bin
+
+alias ssh="kitty +kitten ssh"
