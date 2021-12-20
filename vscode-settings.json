@@ -1,5 +1,5 @@
 {
-  "workbench.colorTheme": "Ra Spring",
+  "workbench.colorTheme": "Github Light Theme - Gray",
   "git.enableSmartCommit": true,
   "editor.rulers": [79, 87, 119],
   "files.trimFinalNewlines": true,
@@ -50,8 +50,7 @@
   "terminal.integrated.allowChords": false,
   "terminal.integrated.drawBoldTextInBrightColors": false,
   "terminal.integrated.experimentalLinkProvider": false,
-  "terminal.integrated.rendererType": "auto",
-  "python.experiments.optOutFrom": ["All"],
+"terminal.integrated.rendererType": "auto",
   "cSpell.enableFiletypes": ["shellscript"],
   "todo-tree.tree.showScanModeButton": false,
   "git.allowNoVerifyCommit": true,
@@ -84,8 +83,7 @@
     "upstream",
     "Tecnativa"
   ],
-  "python.languageServer": "Pylance",
+  "python.languageServer": "Jedi",
   "gitlab.instanceUrl": "https://gitlab.tecnativa.com",
-  "terminal.external.linuxExec": "gome-terminal"
+"terminal.external.linuxExec": "gnome-terminal"
 }
-
