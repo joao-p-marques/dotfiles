@@ -1,5 +1,5 @@
 {
-  "workbench.colorTheme": "Github Light Theme - Gray",
+  "workbench.colorTheme": "GitHub Light Default",
   "git.enableSmartCommit": true,
   "editor.rulers": [79, 87, 119],
   "files.trimFinalNewlines": true,
@@ -44,22 +44,17 @@
   "git.autofetch": true,
   "python.linting.flake8Enabled": true,
   "terminal.integrated.env.linux": {
-    "EDITOR": "code --wait"
+    "EDITOR": "codium --wait"
   },
   "terminal.integrated.gpuAcceleration": "on",
   "terminal.integrated.allowChords": false,
   "terminal.integrated.drawBoldTextInBrightColors": false,
   "terminal.integrated.experimentalLinkProvider": false,
-"terminal.integrated.rendererType": "auto",
+  "terminal.integrated.rendererType": "auto",
   "cSpell.enableFiletypes": ["shellscript"],
   "todo-tree.tree.showScanModeButton": false,
   "git.allowNoVerifyCommit": true,
-  "cSpell.userWords": [
-    "gitlab",
-    "odoo",
-    "pylint",
-    "tecnativa"
-  ],
+  "cSpell.userWords": ["gitlab", "odoo", "pylint", "tecnativa"],
   "window.titleBarStyle": "custom",
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter.notebook.ipynb"
@@ -74,16 +69,10 @@
     "[x]"
   ],
   "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
-  "gitlens.gitCommands.skipConfirmations": [
-    "fetch:command",
-    "switch:command"
-  ],
-  "githubPullRequests.remotes": [
-    "origin",
-    "upstream",
-    "Tecnativa"
-  ],
+  "gitlens.gitCommands.skipConfirmations": ["fetch:command", "switch:command"],
+  "githubPullRequests.remotes": ["origin", "upstream", "Tecnativa"],
   "python.languageServer": "Jedi",
   "gitlab.instanceUrl": "https://gitlab.tecnativa.com",
-"terminal.external.linuxExec": "gnome-terminal"
+  "terminal.external.linuxExec": "gnome-terminal",
+  "terminal.integrated.scrollback": 100000
 }
